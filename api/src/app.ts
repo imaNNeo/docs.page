@@ -4,8 +4,6 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { config } from 'dotenv';
 
-import botMiddleware from './controllers/bot';
-
 config();
 const PORT = process.env.PORT || 8000;
 
@@ -25,8 +23,6 @@ app.use(
   }),
 );
 app.use('/', routes);
-
-app.use(botMiddleware);
 
 app.listen(PORT, () => {
   console.log(`docs.page api server is running at http://localhost:${PORT}`);
