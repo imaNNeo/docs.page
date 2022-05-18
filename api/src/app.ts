@@ -3,7 +3,7 @@ import routes from './routes.js';
 import morgan from 'morgan';
 import cors from 'cors';
 import { config } from 'dotenv';
-
+import probotMiddleware from './probot.js'
 config();
 const PORT = process.env.PORT || 8000;
 
@@ -24,6 +24,10 @@ app.use(
 );
 app.use('/', routes);
 
+app.use(probotMiddleware);
+
 app.listen(PORT, () => {
   console.log(`docs.page api server is running at http://localhost:${PORT}`);
 });
+
+export default app;

@@ -1,11 +1,14 @@
 import { createNodeMiddleware, createProbot, Probot } from 'probot';
 
+console.log(process.env.WEBHOOK_SECRET);
+
+
 // Create a probot instance for the docs.page app
-const probot = createProbot({
-  overrides: {
-    appId: process.env.GITHUB_APP_ID,
-    privateKey: process.env.GITHUB_APP_PRIVATE_KEY,
-  },
+const probot = new Probot({
+  appId: process.env.GITHUB_APP_ID,
+  privateKey: process.env.PRIVATE_KEY,
+  secret: "123",
+  logLevel: 'trace',
 });
 
 // Queries a repository and extracts a file
@@ -32,6 +35,8 @@ type GetFileResponse = {
 
 const app = (app: Probot) => {
   app.on('pull_request.opened', async context => {
+    console.log('boop');
+
     app.log.info(context);
 
     const pull_request = context.payload.pull_request;
@@ -66,7 +71,7 @@ const app = (app: Probot) => {
   });
 };
 
-export const probotApp = createNodeMiddleware(app, {
+export default createNodeMiddleware(app, {
   probot,
   webhooksPath: '/webhooks/bot-docs-page',
 });
