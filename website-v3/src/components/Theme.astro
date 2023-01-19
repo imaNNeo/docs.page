@@ -6,16 +6,21 @@ type Props = {
   fallback: string;
 };
 
-let color: Color;
+let colorLight: Color;
+let colorDark: Color;
 try {
-  color = Color(context.get().config.theme);
+  colorLight = Color(context.get().config.theme);
 } catch {
-  color = Color(Astro.props.fallback);
+  colorLight = Color(Astro.props.fallback);
+}
+try {
+  colorDark = Color(context.get().config.themeDark || context.get().config.theme);
+} catch {
+  colorDark = Color(Astro.props.fallback);
 }
 
-const base = color.hex().toString();
-const light = color.lighten(0.2).hex().toString();
-const dark = color.darken(0.2).hex().toString();
+const light = colorLight.hex().toString();
+const dark = colorDark.hex().toString();
 ---
 
 <style is:global>
@@ -25,8 +30,6 @@ const dark = color.darken(0.2).hex().toString();
 </style>
 <script define:vars={{ base, light, dark }}>
   const root = document.documentElement;
-  root.style.setProperty('--theme-color', base);
-  root.style.setProperty('--theme-color-dark', light);
-  root.style.setProperty('--theme-color-light', dark);
-  root.style.setProperty('--docsearch-primary-color', base);
+  root.style.setProperty('--theme-color', light);
+  root.style.setProperty('--theme-color-dark', dark);
 </script>

@@ -14,7 +14,7 @@ const { title = '', description = '', image = '', author = '' } = Astro.props;
 const { theme } = context.get();
 ---
 
-<html data-theme={!!theme && theme === 'dark' ? 'dark' : ''}>
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,6 +61,8 @@ const { theme } = context.get();
       // Only check users preference if they haven't already set a theme
       if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (theme === 'dark' || theme === 'light') {
+        document.documentElement.setAttribute('data-theme', theme);
       }
     </script>
     <slot />

@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         docs: {
           theme: 'var(--theme-color)',
+          'theme-dark': 'var(--theme-color-dark)',
         },
       },
     },

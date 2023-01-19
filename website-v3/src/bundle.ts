@@ -18,6 +18,7 @@ const $BundleConfig = z.object({
   twitter: z.string(),
   noindex: z.boolean(),
   theme: z.string(),
+  themeDark: z.string().catch(''),
   anchors: z.array(
     z.object({
       icon: z.string(),

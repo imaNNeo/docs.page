@@ -30,6 +30,7 @@ const $Config = z
     twitter: z.string().catch(''),
     noindex: z.boolean().catch(false),
     theme: z.string().catch(''),
+    themeDark: z.string().catch(''),
     headerDepth: z.number().catch(3),
     variables: z.record(z.any()).catch({}),
     googleTagManager: z.string().catch(''),
