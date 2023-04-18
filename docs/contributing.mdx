@@ -16,13 +16,13 @@ Once forked, clone the repository locally:
 git clone git@github.com:invertase/docs.page.git
 ```
 
-Within the directory, install the projects dependencies with NPM/Yarn:
+Within the directory, install the projects dependencies with NPM:
 
 ```bash
-npm install
-# or
-yarn
+npm run setup
 ```
+
+You may use `yarn` or any other package manager of your choice.
 
 Before running, you must add a GitHub personal access token as an environment variable. This token allows API calls
 to be made via GitHub. Create a `.env` file at the root of the project:
@@ -44,9 +44,9 @@ npm run dev
 Aside from the projects homepage, all requests are sent via the `src/pages/[owner]/[name]/[[...slug]].tsx` file. If production a cached version of the statically generated HTML output will be served,
 or created then cached. In development however, the page is built on each request. Therefore load times might seem a bit slower than expected.
 
-> Learn more about this at [Next.js](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation).
+> Learn more about this at [Astro](https://docs.astro.build/en/guides/data-fetching/).
 
-Each request is sent via the `getStaticProps` function, which performs a number of tasks:
+Each request performs a number of tasks:
 
 - Extracting the expected GitHub repository from the request.
 - Extracting, or fetching the GitHub reference for the request.

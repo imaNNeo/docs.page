@@ -3,10 +3,10 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { config } from 'dotenv';
 
-import bundle from './routes/bundle';
-import mdx from './routes/mdx';
-import probot from './probot';
-import { notFound } from './res';
+import bundle from './routes/bundle.js';
+import mdx from './routes/mdx.js';
+import probot from './probot.js';
+import { notFound } from './res.js';
 
 config();
 const PORT = process.env.PORT || 8000;
