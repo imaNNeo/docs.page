@@ -42,7 +42,7 @@
     "zod-validation-error": "^0.2.2"
   },
   "scripts": {
-    "dev": "ts-node-esm src/app.ts",
+    "dev": "nodemon",
     "build": "rollup --config rollup.config.js",
     "start": "node dist/app.js"
   },

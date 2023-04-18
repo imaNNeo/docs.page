@@ -39,6 +39,17 @@ Now run the project:
 npm run dev
 ```
 
+> You also need .env file with following info for the API server.
+
+```
+## ./api/.env
+
+GITHUB_PAT=XXX
+GITHUB_APP_ID=XXX
+GITHUB_APP_PRIVATE_KEY=XXX
+GITHUB_APP_WEBHOOK_SECRET=XXX
+```
+
 ## Structure
 
 Aside from the projects homepage, all requests are sent via the `src/pages/[owner]/[name]/[[...slug]].tsx` file. If production a cached version of the statically generated HTML output will be served,

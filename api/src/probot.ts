@@ -31,7 +31,8 @@ type GetFileResponse = {
 };
 
 const app = (app: Probot) => {
-  app.on('pull_request.opened', async context => {
+  const newLocal = 'pull_request.opened';
+  app.on(newLocal, async context => {
     app.log.info(context);
 
     const pull_request = context.payload.pull_request;
